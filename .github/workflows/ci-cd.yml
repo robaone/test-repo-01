@@ -1,0 +1,32 @@
+name: Continuous Integration & Delivery
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  initialize:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: initialize
+        id: initialize
+        uses: robaone/initialize-action@v0.3.7
+        with:
+          project-root: .
+          script-version: 0.5.1
+    outputs:
+      matrix: ${{ steps.initialize.outputs.matrix }}
+  unit-tests:
+    needs: [initialize]
+    strategy:
+      matrix: ${{ fromJson(needs.initialize.outputs.matrix) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4

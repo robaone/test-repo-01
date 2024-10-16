@@ -1,0 +1,6 @@
+{
+        "git": {
+                "main": "main",
+                "develop": "main"
+        }
+}
