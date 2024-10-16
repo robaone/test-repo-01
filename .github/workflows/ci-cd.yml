@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - uses: actions/checkout@v4
       - name: initialize
         id: initialize
         uses: robaone/initialize-action@v0.3.7
