@@ -18,6 +18,7 @@ jobs:
         uses: robaone/initialize-action@v0.3.7
         with:
           project-root: .
+          script-version: 0.5.0
     outputs:
       matrix: ${{ steps.initialize.outputs.matrix }}
   unit-tests:
